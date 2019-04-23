@@ -49,7 +49,7 @@ class Team():
             
             #print(self.points)
         
-        # υπολογίσετε τους βαθμούς της ομάδας
+        
         return 0
         
     def in_group(self):
@@ -60,7 +60,7 @@ class Team():
         return group
             
     def __repr__(self):
-        out = self.name+'\nΑγώνες:\n'
+        out = self.name+'\nGames:\n'
         for g in self.games:
             out += repr(g) + '\n'
         return out
@@ -86,7 +86,7 @@ class Game():
         return self.team1.name+'-'+self.team2.name+":" + "{}-{}".format(*self.score)
 
 class Persistant():
-    ''' κλάση μόνιμης αποθήκευσης των αντικειμένων Team, Game'''
+    '''permanent storage class of objects Team,Game'''
     def __init__(self):
         self.data = [[Team.theTeams, 'teams.pickle'], [Game.theGames,'games.pickle']]
     def store(self):
@@ -129,10 +129,10 @@ class Main():
             self.show_country(teams[0])
 
     def show_country(self, t):
-        print(50*'=', '\nΟμάδα:', t)
+        print(50*'=', '\nTeam:', t)
         t.calculate_score()
-        print('Βαθμοί: {}'.format(t.points))
-        print('\nΆλλες ομάδες στο ίδιο γκρουπ:', t.in_group(), '\n', 50*'=', '\n\n')
+        print('Points: {}'.format(t.points))
+        print('\nOther teams in same group:', t.in_group(), '\n', 50*'=', '\n\n')
                 
     def load_csv(self):       
         with open('worldcup2018.csv', 'r', encoding='utf-8') as wc:
